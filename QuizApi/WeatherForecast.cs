@@ -1,6 +1,6 @@
 using System;
 
-namespace QuizApi
+namespace QuizApp
 {
 	public class WeatherForecast
 	{
