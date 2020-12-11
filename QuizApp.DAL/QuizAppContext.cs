@@ -27,6 +27,7 @@ namespace QuizApp.DAL
 			modelBuilder.ApplyConfiguration(new TestingUrlConfiguration());
 			modelBuilder.ApplyConfiguration(new TestQuestionConfiguration());
 			modelBuilder.ApplyConfiguration(new UserConfiguration());
+			modelBuilder.Seed();
 		}
 	}
 }

@@ -147,6 +147,63 @@ namespace QuizApp.DAL.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Test",
+                columns: new[] { "Id", "Description", "Name", "QuestionTimeLimit", "TestTimeLimit" },
+                values: new object[] { new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531"), "This test is designed to cover main concepts such as basic syntax, data types, collections, operators, exception handling and OOP in C# .NET.", ".Net Quiz", null, new TimeSpan(0, 0, 30, 0, 0) });
+
+            migrationBuilder.InsertData(
+                table: "Test",
+                columns: new[] { "Id", "Description", "Name", "QuestionTimeLimit", "TestTimeLimit" },
+                values: new object[] { new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9"), "Test your geek knowledge with this epic quiz", "Geek Culture/Movies/TV shows/Cartoons", new TimeSpan(0, 0, 0, 30, 0), null });
+
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "Id", "Password", "Username" },
+                values: new object[] { new Guid("f4d17a67-ad85-42bd-a92b-375c58af1f20"), "admin", "admin" });
+
+            migrationBuilder.InsertData(
+                table: "TestQuestion",
+                columns: new[] { "Id", "HintText", "QuestionText", "TestId" },
+                values: new object[,]
+                {
+                    { new Guid("640ec210-4607-4851-99b9-111e6f31ae73"), "Select one correct answer", "When var and dynamic are evaluated?", new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531") },
+                    { new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272"), "Select one correct answer", "What is Han Solo's ship name?", new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9") },
+                    { new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77"), "Select one correct answer", "The Answer to the Ultimate Question of Life, the Universe, and Everything", new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TestingUrl",
+                columns: new[] { "Id", "AllowedEndDate", "AllowedStartDate", "IntervieweeName", "NumberOfRuns", "TestId" },
+                values: new object[] { new Guid("11266ec6-6e51-4ba6-adcd-cce73d3b5b1c"), new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John Dou", 5, new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531") });
+
+            migrationBuilder.InsertData(
+                table: "TestAnswer",
+                columns: new[] { "Id", "AnswerText", "IsCorrect", "TestQuestionId" },
+                values: new object[,]
+                {
+                    { new Guid("133443f7-2f50-4eab-8551-65468157e9e1"), "Both of them are evaluated at runtime.", false, new Guid("640ec210-4607-4851-99b9-111e6f31ae73") },
+                    { new Guid("d576779d-0034-45b9-86e4-d2c2db64dd26"), "\"var\" is evaluated at compilation \"dynamic\" is evaluated in runtime", true, new Guid("640ec210-4607-4851-99b9-111e6f31ae73") },
+                    { new Guid("56e11d3c-f1bb-4a02-808c-8f08780a5ca2"), "\"var\" is evaluated at runtime. \"dynamic\" is evaluated at compile time", false, new Guid("640ec210-4607-4851-99b9-111e6f31ae73") },
+                    { new Guid("8e7f787c-fa0d-4b40-9928-87fe69d44dce"), "Weekly Falcon", false, new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272") },
+                    { new Guid("4b5f9a77-90b2-4180-885f-94c35155870e"), "Century Falcon", false, new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272") },
+                    { new Guid("2008610d-70eb-45cc-88ff-303ccbfc4068"), "Millennium Falcon", true, new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272") },
+                    { new Guid("923c8ad7-5b0c-43be-b87d-f46d0832cd85"), "There is no answer", false, new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77") },
+                    { new Guid("fa3c6ecb-9fb6-467b-8bfa-d3b54c64eca3"), "42", true, new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77") },
+                    { new Guid("520f5a49-283f-4821-b887-bf26555872b7"), "Love", false, new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77") },
+                    { new Guid("36130e54-3b25-4662-936e-0bb2893343d7"), "Life", false, new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TestingResult",
+                columns: new[] { "Id", "CorrectAnswers", "Duration", "IntervieweeName", "QuestionTried", "Score", "TestingEndDateTime", "TestingStartDateTime", "TestingUrlId" },
+                values: new object[] { new Guid("e602029d-1350-4f2e-9bbf-850e39603e1a"), 1, new TimeSpan(0, 0, 25, 0, 0), "Michael Scott", 1, 100.0, new DateTime(2020, 12, 5, 7, 55, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 12, 5, 7, 30, 0, 0, DateTimeKind.Unspecified), new Guid("11266ec6-6e51-4ba6-adcd-cce73d3b5b1c") });
+
+            migrationBuilder.InsertData(
+                table: "TestingResultAnswer",
+                columns: new[] { "Id", "TestAnswerId", "TestQuestionId", "TestingResultId" },
+                values: new object[] { new Guid("a33b38c6-bd0f-4780-bbce-1b367b99e105"), new Guid("d576779d-0034-45b9-86e4-d2c2db64dd26"), new Guid("640ec210-4607-4851-99b9-111e6f31ae73"), new Guid("e602029d-1350-4f2e-9bbf-850e39603e1a") });
+
             migrationBuilder.CreateIndex(
                 name: "IX_TestAnswer_TestQuestionId",
                 table: "TestAnswer",

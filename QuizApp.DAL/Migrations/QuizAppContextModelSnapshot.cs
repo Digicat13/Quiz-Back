@@ -43,6 +43,22 @@ namespace QuizApp.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Test");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531"),
+                            Description = "This test is designed to cover main concepts such as basic syntax, data types, collections, operators, exception handling and OOP in C# .NET.",
+                            Name = ".Net Quiz",
+                            TestTimeLimit = new TimeSpan(0, 0, 30, 0, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9"),
+                            Description = "Test your geek knowledge with this epic quiz",
+                            Name = "Geek Culture/Movies/TV shows/Cartoons",
+                            QuestionTimeLimit = new TimeSpan(0, 0, 0, 30, 0)
+                        });
                 });
 
             modelBuilder.Entity("QuizApp.DAL.Entities.TestAnswer", b =>
@@ -66,6 +82,78 @@ namespace QuizApp.DAL.Migrations
                     b.HasIndex("TestQuestionId");
 
                     b.ToTable("TestAnswer");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("133443f7-2f50-4eab-8551-65468157e9e1"),
+                            AnswerText = "Both of them are evaluated at runtime.",
+                            IsCorrect = false,
+                            TestQuestionId = new Guid("640ec210-4607-4851-99b9-111e6f31ae73")
+                        },
+                        new
+                        {
+                            Id = new Guid("d576779d-0034-45b9-86e4-d2c2db64dd26"),
+                            AnswerText = "\"var\" is evaluated at compilation \"dynamic\" is evaluated in runtime",
+                            IsCorrect = true,
+                            TestQuestionId = new Guid("640ec210-4607-4851-99b9-111e6f31ae73")
+                        },
+                        new
+                        {
+                            Id = new Guid("56e11d3c-f1bb-4a02-808c-8f08780a5ca2"),
+                            AnswerText = "\"var\" is evaluated at runtime. \"dynamic\" is evaluated at compile time",
+                            IsCorrect = false,
+                            TestQuestionId = new Guid("640ec210-4607-4851-99b9-111e6f31ae73")
+                        },
+                        new
+                        {
+                            Id = new Guid("8e7f787c-fa0d-4b40-9928-87fe69d44dce"),
+                            AnswerText = "Weekly Falcon",
+                            IsCorrect = false,
+                            TestQuestionId = new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272")
+                        },
+                        new
+                        {
+                            Id = new Guid("4b5f9a77-90b2-4180-885f-94c35155870e"),
+                            AnswerText = "Century Falcon",
+                            IsCorrect = false,
+                            TestQuestionId = new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272")
+                        },
+                        new
+                        {
+                            Id = new Guid("2008610d-70eb-45cc-88ff-303ccbfc4068"),
+                            AnswerText = "Millennium Falcon",
+                            IsCorrect = true,
+                            TestQuestionId = new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272")
+                        },
+                        new
+                        {
+                            Id = new Guid("923c8ad7-5b0c-43be-b87d-f46d0832cd85"),
+                            AnswerText = "There is no answer",
+                            IsCorrect = false,
+                            TestQuestionId = new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77")
+                        },
+                        new
+                        {
+                            Id = new Guid("fa3c6ecb-9fb6-467b-8bfa-d3b54c64eca3"),
+                            AnswerText = "42",
+                            IsCorrect = true,
+                            TestQuestionId = new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77")
+                        },
+                        new
+                        {
+                            Id = new Guid("520f5a49-283f-4821-b887-bf26555872b7"),
+                            AnswerText = "Love",
+                            IsCorrect = false,
+                            TestQuestionId = new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77")
+                        },
+                        new
+                        {
+                            Id = new Guid("36130e54-3b25-4662-936e-0bb2893343d7"),
+                            AnswerText = "Life",
+                            IsCorrect = false,
+                            TestQuestionId = new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77")
+                        });
                 });
 
             modelBuilder.Entity("QuizApp.DAL.Entities.TestQuestion", b =>
@@ -89,6 +177,29 @@ namespace QuizApp.DAL.Migrations
                     b.HasIndex("TestId");
 
                     b.ToTable("TestQuestion");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("640ec210-4607-4851-99b9-111e6f31ae73"),
+                            HintText = "Select one correct answer",
+                            QuestionText = "When var and dynamic are evaluated?",
+                            TestId = new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531")
+                        },
+                        new
+                        {
+                            Id = new Guid("09a0b09f-4cf0-4be1-afee-cd3a7d263272"),
+                            HintText = "Select one correct answer",
+                            QuestionText = "What is Han Solo's ship name?",
+                            TestId = new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9")
+                        },
+                        new
+                        {
+                            Id = new Guid("c6d7f91e-6c20-404f-b969-7c7de0d71c77"),
+                            HintText = "Select one correct answer",
+                            QuestionText = "The Answer to the Ultimate Question of Life, the Universe, and Everything",
+                            TestId = new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9")
+                        });
                 });
 
             modelBuilder.Entity("QuizApp.DAL.Entities.TestingResult", b =>
@@ -128,6 +239,20 @@ namespace QuizApp.DAL.Migrations
                     b.HasIndex("TestingUrlId");
 
                     b.ToTable("TestingResult");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e602029d-1350-4f2e-9bbf-850e39603e1a"),
+                            CorrectAnswers = 1,
+                            Duration = new TimeSpan(0, 0, 25, 0, 0),
+                            IntervieweeName = "Michael Scott",
+                            QuestionTried = 1,
+                            Score = 100.0,
+                            TestingEndDateTime = new DateTime(2020, 12, 5, 7, 55, 0, 0, DateTimeKind.Unspecified),
+                            TestingStartDateTime = new DateTime(2020, 12, 5, 7, 30, 0, 0, DateTimeKind.Unspecified),
+                            TestingUrlId = new Guid("11266ec6-6e51-4ba6-adcd-cce73d3b5b1c")
+                        });
                 });
 
             modelBuilder.Entity("QuizApp.DAL.Entities.TestingResultAnswer", b =>
@@ -154,6 +279,15 @@ namespace QuizApp.DAL.Migrations
                     b.HasIndex("TestingResultId");
 
                     b.ToTable("TestingResultAnswer");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a33b38c6-bd0f-4780-bbce-1b367b99e105"),
+                            TestAnswerId = new Guid("d576779d-0034-45b9-86e4-d2c2db64dd26"),
+                            TestQuestionId = new Guid("640ec210-4607-4851-99b9-111e6f31ae73"),
+                            TestingResultId = new Guid("e602029d-1350-4f2e-9bbf-850e39603e1a")
+                        });
                 });
 
             modelBuilder.Entity("QuizApp.DAL.Entities.TestingUrl", b =>
@@ -183,6 +317,17 @@ namespace QuizApp.DAL.Migrations
                     b.HasIndex("TestId");
 
                     b.ToTable("TestingUrl");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11266ec6-6e51-4ba6-adcd-cce73d3b5b1c"),
+                            AllowedEndDate = new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            AllowedStartDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IntervieweeName = "John Dou",
+                            NumberOfRuns = 5,
+                            TestId = new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531")
+                        });
                 });
 
             modelBuilder.Entity("QuizApp.DAL.Entities.User", b =>
@@ -204,6 +349,14 @@ namespace QuizApp.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f4d17a67-ad85-42bd-a92b-375c58af1f20"),
+                            Password = "admin",
+                            Username = "admin"
+                        });
                 });
 
             modelBuilder.Entity("QuizApp.DAL.Entities.TestAnswer", b =>
