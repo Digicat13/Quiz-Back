@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace QuizApp.DAL.Entities
+﻿namespace QuizApp.DAL.Entities
 {
 	public abstract class BaseEntity<T>
 	{
