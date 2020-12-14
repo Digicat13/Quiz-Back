@@ -5,8 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuizApp.DAL;
-using QuizApp.DAL.Repository;
-using QuizApp.DAL.Repository.Contracts;
+using QuizApp.ServiceExtensions;
 
 namespace QuizApp
 {
@@ -23,8 +22,10 @@ namespace QuizApp
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<QuizAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+			services.ConfigureRepositoryWrapper();
+			services.ConfigureMapper();
+			services.ConfigureServices();
 			services.AddControllers();
-			services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
