@@ -9,6 +9,7 @@ namespace QuizApp.ServiceExtensions
 		public static void ConfigureServices(this IServiceCollection services)
 		{
 			services.AddScoped<ITestService, TestService>();
+			services.AddScoped<IQuestionService, QuestionService>();
 		}
 	}
 }
