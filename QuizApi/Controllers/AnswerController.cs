@@ -40,5 +40,25 @@ namespace QuizApp.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                var result = await _answerService.Delete(id);
+                if (result == true)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Internal server error " + e.Message);
+            }
+        }
     }
 }

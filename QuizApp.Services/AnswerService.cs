@@ -34,5 +34,16 @@ namespace QuizApp.Services
             var result = _mapper.Map<TestAnswerDto>(answer);
             return result;
         }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            var answer = await GetAnswerById(id);
+            if (answer == null)
+            {
+                return false;
+            }
+            var rowsCount = await _repository.TestAnswer.Delete(id);
+            return rowsCount == 0 ? false : true;
+        }
     }
 }
