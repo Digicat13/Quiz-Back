@@ -1,7 +1,9 @@
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using QuizApp.DAL.Entities;
 using QuizApp.DAL.Repository.Contracts;
 using QuizApp.DTO;
+using QuizApp.DTO.Requests;
 using QuizApp.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -40,6 +42,22 @@ namespace QuizApp.Services
         {
             var test = await _repository.Test.GetTestById(id);
             var result = _mapper.Map<TestDto>(test);
+            return result;
+        }
+
+        public async Task<TestDto> Add(CreateTestRequest testRequest)
+        {
+            var test = _mapper.Map<Test>(testRequest);
+            var rowsCount = await _repository.Test.Add(test);
+            if (rowsCount == 0)
+            {
+                throw new ArgumentException();
+            }
+            var result = await GetTestById(test.Id);
+            if (result == null)
+            {
+                throw new KeyNotFoundException();
+            }
             return result;
         }
     }

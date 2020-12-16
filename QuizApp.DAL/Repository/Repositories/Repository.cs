@@ -29,9 +29,10 @@ namespace QuizApp.DAL.Repository.Repositories
 			return await _dbContext.Set<TEntity>().FindAsync(id);
 		}
 
-		public async void Add(TEntity entity)
+		public async Task<int> Add(TEntity entity)
 		{
 			await _dbContext.Set<TEntity>().AddAsync(entity);
+			return _dbContext.SaveChangesAsync().Result;
 		}
 
 		public TEntity Update(TEntity entity)

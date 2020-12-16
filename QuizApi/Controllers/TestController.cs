@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizApp.DTO;
+using QuizApp.DTO.Requests;
 using QuizApp.Services.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuizApp.Controllers
 {
@@ -53,6 +54,20 @@ namespace QuizApp.Controllers
             catch (Exception)
             {
                 return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<TestDto>> Post(CreateTestRequest test)
+        {
+            try
+            {
+                var result = await _testService.Add(test);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Internal server error " + e.Message);
             }
         }
     }

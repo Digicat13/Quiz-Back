@@ -8,7 +8,7 @@ namespace QuizApp.DAL.Repository.Contracts
 		IQueryable<TEntity> GetAll();
 		TEntity GetById(TId id);
 		Task<TEntity> GetByIdAsync(TId id);
-		void Add(TEntity entity);
+		Task<int> Add(TEntity entity);
 		TEntity Update(TEntity entity);
 		void Delete(TId id);
 	}

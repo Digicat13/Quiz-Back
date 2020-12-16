@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using QuizApp.DAL.Entities;
 using QuizApp.DAL.Repository.Contracts;
 using System;
