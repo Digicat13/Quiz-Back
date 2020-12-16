@@ -7,5 +7,6 @@ namespace QuizApp.Services.Contracts
     public interface IQuestionService
     {
         Task<TestQuestionDto> GetQuestionById(Guid id);
+        Task<bool> Delete(Guid id);
     }
 }
