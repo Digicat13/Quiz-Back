@@ -41,10 +41,11 @@ namespace QuizApp.DAL.Repository.Repositories
 			return result.Entity;
 		}
 
-		public async void Delete(TId id)
+		public async Task<int> Delete(TId id)
 		{
 			var entity = await _dbContext.Set<TEntity>().FindAsync(id);
 			_dbContext.Set<TEntity>().Remove(entity);
+			return _dbContext.SaveChangesAsync().Result;
 		}
 	}
 }

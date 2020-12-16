@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuizApp.DAL.Migrations
 {
-    public partial class InitDb : Migration
+    public partial class initDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,7 +72,8 @@ namespace QuizApp.DAL.Migrations
                         name: "FK_TestQuestion_Test_TestId",
                         column: x => x.TestId,
                         principalTable: "Test",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -115,7 +116,8 @@ namespace QuizApp.DAL.Migrations
                         name: "FK_TestAnswer_TestQuestion_TestQuestionId",
                         column: x => x.TestQuestionId,
                         principalTable: "TestQuestion",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

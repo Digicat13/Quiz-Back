@@ -10,6 +10,6 @@ namespace QuizApp.DAL.Repository.Contracts
 		Task<TEntity> GetByIdAsync(TId id);
 		Task<int> Add(TEntity entity);
 		TEntity Update(TEntity entity);
-		void Delete(TId id);
+		Task<int> Delete(TId id);
 	}
 }

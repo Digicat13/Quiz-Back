@@ -364,7 +364,7 @@ namespace QuizApp.DAL.Migrations
                     b.HasOne("QuizApp.DAL.Entities.TestQuestion", "TestQuestion")
                         .WithMany("TestAnswers")
                         .HasForeignKey("TestQuestionId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TestQuestion");
@@ -375,7 +375,7 @@ namespace QuizApp.DAL.Migrations
                     b.HasOne("QuizApp.DAL.Entities.Test", "Test")
                         .WithMany("TestQuestions")
                         .HasForeignKey("TestId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Test");

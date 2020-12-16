@@ -19,7 +19,7 @@ namespace QuizApp.DAL.Configuration
 			builder.HasOne(ta => ta.TestQuestion)
 				.WithMany(tq => tq.TestAnswers)
 				.HasForeignKey(ta => ta.TestQuestionId)
-				.OnDelete(DeleteBehavior.NoAction);
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

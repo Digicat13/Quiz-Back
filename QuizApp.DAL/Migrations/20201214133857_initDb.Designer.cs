@@ -10,8 +10,8 @@ using QuizApp.DAL;
 namespace QuizApp.DAL.Migrations
 {
     [DbContext(typeof(QuizAppContext))]
-    [Migration("20201209130016_InitDb")]
-    partial class InitDb
+    [Migration("20201214133857_initDb")]
+    partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -366,7 +366,7 @@ namespace QuizApp.DAL.Migrations
                     b.HasOne("QuizApp.DAL.Entities.TestQuestion", "TestQuestion")
                         .WithMany("TestAnswers")
                         .HasForeignKey("TestQuestionId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TestQuestion");
@@ -377,7 +377,7 @@ namespace QuizApp.DAL.Migrations
                     b.HasOne("QuizApp.DAL.Entities.Test", "Test")
                         .WithMany("TestQuestions")
                         .HasForeignKey("TestId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Test");

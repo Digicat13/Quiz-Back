@@ -60,5 +60,16 @@ namespace QuizApp.Services
             }
             return result;
         }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            var test = await GetTestById(id);
+            if (test == null)
+            {
+                return false;
+            }
+            var rowsCount = await _repository.Test.Delete(id);
+            return rowsCount == 0 ? false : true;
+        }
     }
 }
