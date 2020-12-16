@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QuizApp.DTO
+namespace QuizApp.DTO.Requests
 {
-    public class TestQuestionDto
+    public class UpdateTestQuestionRequest
     {
         public Guid Id { get; set; }
         public Guid TestId { get; set; }
         public string QuestionText { get; set; }
         public string HintText { get; set; }
-        public List<TestAnswerDto> Answers { get; set; }
+        public List<UpdateTestAnswerRequest> Answers { get; set; }
     }
 }

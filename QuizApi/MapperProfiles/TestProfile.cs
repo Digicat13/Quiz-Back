@@ -13,6 +13,8 @@ namespace QuizApp.MapperProfiles
                 .ForMember(d => d.Questions, opt => opt.MapFrom(src => src.TestQuestions));
             CreateMap<CreateTestRequest, Test>()
                 .ForMember(d => d.TestQuestions, opt => opt.MapFrom(src => src.Questions));
+            CreateMap<UpdateTestRequest, Test>()
+                .ForMember(d => d.TestQuestions, opt => opt.MapFrom(src => src.Questions));
         }
     }
 }

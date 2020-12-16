@@ -91,5 +91,24 @@ namespace QuizApp.Controllers
                 return StatusCode(500, "Internal server error " + e.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(Guid id, UpdateTestRequest testRequest)
+        {
+            try
+            {
+                var test = await _testService.GetTestById(id);
+                if (test == null)
+                {
+                    return NotFound();
+                }
+                var result = await _testService.Update(testRequest);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Internal server error " + e.Message);
+            }
+        }
     }
 }

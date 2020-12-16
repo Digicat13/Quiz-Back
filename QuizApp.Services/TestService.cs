@@ -71,5 +71,17 @@ namespace QuizApp.Services
             var rowsCount = await _repository.Test.Delete(id);
             return rowsCount == 0 ? false : true;
         }
+
+        public async Task<TestDto> Update(UpdateTestRequest testRequest)
+        {
+            var test = _mapper.Map<Test>(testRequest);
+            var rowsCount = await _repository.Test.Update(test);
+            if (rowsCount == 0)
+            {
+                throw new ArgumentException();
+            }
+            var result = await GetTestById(test.Id);
+            return result;
+        }
     }
 }
