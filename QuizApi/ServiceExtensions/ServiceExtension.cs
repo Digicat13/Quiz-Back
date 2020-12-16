@@ -10,6 +10,7 @@ namespace QuizApp.ServiceExtensions
 		{
 			services.AddScoped<ITestService, TestService>();
 			services.AddScoped<IQuestionService, QuestionService>();
+			services.AddScoped<IAnswerService, AnswerService>();
 		}
 	}
 }
