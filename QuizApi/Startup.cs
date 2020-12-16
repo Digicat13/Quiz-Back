@@ -26,11 +26,14 @@ namespace QuizApp
 			services.ConfigureMapper();
 			services.ConfigureServices();
 			services.AddControllers();
+			services.ConfigureCors();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			app.UseCors(options => options.AllowAnyOrigin());
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
