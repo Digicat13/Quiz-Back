@@ -12,7 +12,7 @@ namespace QuizApp.DAL
             var hasher = new PasswordHasher<User>();
             modelBuilder.Entity<User>().HasData(new User
             {
-                Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                Id = new Guid("a18be9c0-aa65-4af8-bd17-00bd9344e575").ToString(),
                 UserName = "admin",
                 NormalizedUserName = "admin",
                 Email = "admin@gmail.com",
@@ -21,7 +21,6 @@ namespace QuizApp.DAL
                 PasswordHash = hasher.HashPassword(null, "admin"),
                 SecurityStamp = string.Empty
             });
-      
             modelBuilder.Entity<Test>().HasData(
                 new Test
                 {

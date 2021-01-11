@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
@@ -11,6 +12,7 @@ namespace QuizApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TestController : ControllerBase
     {
         private readonly ITestService _testService;
@@ -37,9 +39,9 @@ namespace QuizApp.Controllers
                 var result = await _testService.GetAll();
                 return Ok(result);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Internal server error" + e.Message);
             }
         }
 
