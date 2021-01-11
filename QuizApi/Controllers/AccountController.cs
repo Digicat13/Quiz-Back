@@ -59,7 +59,7 @@ namespace QuizApp.Controllers
             }
             catch (FormatException e)
             {
-                return StatusCode(401, "Wrong credentials");
+                return StatusCode(401, "Wrong credentials" + e.Message);
             }
             catch (Exception e)
             {
