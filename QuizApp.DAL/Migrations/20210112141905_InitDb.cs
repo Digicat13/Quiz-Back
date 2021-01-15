@@ -176,7 +176,7 @@ namespace QuizApp.DAL.Migrations
                     IntervieweeName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     AllowedStartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AllowedEndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    NumberOfRuns = table.Column<int>(type: "int", nullable: false)
+                    NumberOfRuns = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -284,7 +284,7 @@ namespace QuizApp.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "9564c19a-e7fe-4a8c-aaf0-1a206745d799", "admin@gmail.com", true, false, null, "admin@gmail.com", "admin", "AQAAAAEAACcQAAAAELUxzjq6Mntm+PrXZT2eVqz+nizkiF2tZTgy+yP80byrRWJKeR2CWo5Eq2XcIwvDQA==", null, false, "", false, "admin" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "07b0f155-d4d4-411c-87de-fc61dd599197", "admin@gmail.com", true, false, null, "admin@gmail.com", "admin", "AQAAAAEAACcQAAAAEJVK9YSVz3NSVbYutxVcccvwywG7mgjvTqLeG8MFSOM/TbZ/2EUjGsgzeSTSnV2iNQ==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Test",

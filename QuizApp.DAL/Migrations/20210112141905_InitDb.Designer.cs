@@ -10,7 +10,7 @@ using QuizApp.DAL;
 namespace QuizApp.DAL.Migrations
 {
     [DbContext(typeof(QuizAppContext))]
-    [Migration("20201223111852_InitDb")]
+    [Migration("20210112141905_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -439,7 +439,7 @@ namespace QuizApp.DAL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("NumberOfRuns")
+                    b.Property<int?>("NumberOfRuns")
                         .HasColumnType("int");
 
                     b.Property<Guid>("TestId")
@@ -533,13 +533,13 @@ namespace QuizApp.DAL.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9564c19a-e7fe-4a8c-aaf0-1a206745d799",
+                            ConcurrencyStamp = "07b0f155-d4d4-411c-87de-fc61dd599197",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAELUxzjq6Mntm+PrXZT2eVqz+nizkiF2tZTgy+yP80byrRWJKeR2CWo5Eq2XcIwvDQA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJVK9YSVz3NSVbYutxVcccvwywG7mgjvTqLeG8MFSOM/TbZ/2EUjGsgzeSTSnV2iNQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

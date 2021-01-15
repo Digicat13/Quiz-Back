@@ -14,6 +14,7 @@ namespace QuizApp.ServiceExtensions
                 mc.AddProfile(new TestQuestionProfile());
                 mc.AddProfile(new TestAnswerProfile());
                 mc.AddProfile(new UserProfile());
+                mc.AddProfile(new TestingProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 
 namespace QuizApp.DAL.Entities
@@ -10,7 +10,7 @@ namespace QuizApp.DAL.Entities
 		public string IntervieweeName { get; set; }
 		public DateTime? AllowedStartDate { get; set; }
 		public DateTime? AllowedEndDate { get; set; }
-		public int NumberOfRuns { get; set; }
+		public int? NumberOfRuns { get; set; }
 		public IEnumerable<TestingResult> TestingResults { get; set; } 
 			= new List<TestingResult>();
 	}
