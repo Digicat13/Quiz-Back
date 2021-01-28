@@ -9,7 +9,8 @@ namespace QuizApp.MapperProfiles
 	{
 		public TestingProfile()
 		{
-			CreateMap<TestingUrl, TestingDto>();
+			CreateMap<TestingUrl, TestingDto>()
+				.ReverseMap();
 			CreateMap<CreateTestingRequest, TestingUrl>();
 		}
 	}

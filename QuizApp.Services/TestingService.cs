@@ -60,5 +60,33 @@ namespace QuizApp.Services
 			}
 			return result;
 		}
+
+		public async Task<TestingDto> Update(TestingDto testingRequest)
+		{
+			var testing = _mapper.Map<TestingUrl>(testingRequest);
+			var rowsCount = await _repository.TestingUrl.Update(testing);
+			if (rowsCount == 0)
+			{
+				throw new ArgumentException();
+			}
+			var result = await GetTestingById(testing.Id);
+			return result;
+		}
+
+		public async Task<TestingDto> ReduceTestingAttempts(Guid id)
+		{
+			var testing = await GetTestingById(id);
+			if (testing.NumberOfRuns != 0 || testing.NumberOfRuns != null)
+			{
+				testing.NumberOfRuns--;
+				var testingRequest = _mapper.Map<TestingDto>(testing);
+				var updatedTesting = await Update(testingRequest);
+				return updatedTesting;
+			}
+			else
+			{
+				throw new InvalidOperationException("Number of left testing attempts is 0");
+			}
+		}
 	}
 }

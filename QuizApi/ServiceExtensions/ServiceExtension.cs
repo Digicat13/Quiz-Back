@@ -13,7 +13,8 @@ namespace QuizApp.ServiceExtensions
             services.AddScoped<IAnswerService, AnswerService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<ITestingService, TestingService>();
+			services.AddScoped<ITestingService, TestingService>();
+            services.AddScoped<ITestingResultService, TestingResultService>();
         }
     }
 }

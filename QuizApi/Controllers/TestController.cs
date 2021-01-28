@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
+using QuizApp.DTO.Responses;
 using QuizApp.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,21 @@ namespace QuizApp.Controllers
             try
             {
                 var result = await _testService.GetTestById(id);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet("quiz/{id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<TestUserResponse>> GetUserTestById(Guid id)
+        {
+            try
+            {
+                var result = await _testService.GetUserTestById(id);
                 return Ok(result);
             }
             catch (Exception)

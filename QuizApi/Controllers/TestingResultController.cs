@@ -1,42 +1,40 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
 using QuizApp.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace QuizApp.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	[Authorize]
-	public class TestingController : ControllerBase
+	public class TestingResultController : ControllerBase
 	{
-		private readonly ITestingService _testingService;
-		private readonly ILogger<TestingController> _logger;
+		private readonly ITestingResultService _testingResultService;
+		private readonly ILogger<TestingResultController> _logger;
 
-		public TestingController(ITestingService testingService, ILogger<TestingController> logger)
+		public TestingResultController(ITestingResultService testingResultService, ILogger<TestingResultController> logger)
 		{
 			_logger = logger;
-			if (testingService == null)
+			if (testingResultService == null)
 			{
 				_logger.LogError("Failed to inject TestingService into Answer controller");
 			}
 			else
 			{
-				_testingService = testingService;
+				_testingResultService = testingResultService;
 			}
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<List<TestingDto>>> GetAll()
+		public async Task<ActionResult<List<TestingResultDto>>> GetAll()
 		{
 			try
 			{
-				var result = await _testingService.GetAll();
+				var result = await _testingResultService.GetAll();
 				return Ok(result);
 			}
 			catch (Exception e)
@@ -45,14 +43,12 @@ namespace QuizApp.Controllers
 			}
 		}
 
-
 		[HttpGet("{id}")]
-		[AllowAnonymous]
 		public async Task<ActionResult> GetById(Guid id)
 		{
 			try
 			{
-				var result = await _testingService.GetTestingById(id);
+				var result = await _testingResultService.GetTestingResultById(id);
 				return Ok(result);
 			}
 			catch (Exception)
@@ -62,11 +58,11 @@ namespace QuizApp.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult<TestingDto>> Post(CreateTestingRequest testing)
+		public async Task<ActionResult<TestingResultDto>> Post(CreateTestingResultRequest testingResult)
 		{
 			try
 			{
-				var result = await _testingService.Add(testing);
+				var result = await _testingResultService.Add(testingResult);
 				return Ok(result);
 			}
 			catch (Exception e)

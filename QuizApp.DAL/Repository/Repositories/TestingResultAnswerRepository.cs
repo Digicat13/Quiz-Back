@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using QuizApp.DAL.Entities;
 using QuizApp.DAL.Repository.Contracts;
 

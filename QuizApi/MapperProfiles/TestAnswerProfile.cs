@@ -2,6 +2,7 @@
 using QuizApp.DAL.Entities;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
+using QuizApp.DTO.Responses;
 
 namespace QuizApp.MapperProfiles
 {
@@ -10,6 +11,7 @@ namespace QuizApp.MapperProfiles
         public TestAnswerProfile()
         {
             CreateMap<TestAnswer, TestAnswerDto>();
+            CreateMap<TestAnswer, TestAnswerUserResponse>();
             CreateMap<CreateTestAnswerRequest, TestAnswer>();
             CreateMap<UpdateTestAnswerRequest, TestAnswer>();
         }

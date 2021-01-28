@@ -1,5 +1,6 @@
 ﻿using QuizApp.DTO;
 using QuizApp.DTO.Requests;
+using QuizApp.DTO.Responses;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace QuizApp.Services.Contracts
     {
         Task<List<TestDto>> GetAll();
         Task<TestDto> GetTestById(Guid id);
+        Task<TestUserResponse> GetUserTestById(Guid id);
         Task<TestDto> Add(CreateTestRequest testRequest);
         Task<bool> Delete(Guid id);
         Task<TestDto> Update(UpdateTestRequest testRequest);
