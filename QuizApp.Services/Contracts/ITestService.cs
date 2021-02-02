@@ -1,4 +1,5 @@
-﻿using QuizApp.DTO;
+﻿using QuizApp.DAL.QueryParameters;
+using QuizApp.DTO;
 using QuizApp.DTO.Requests;
 using QuizApp.DTO.Responses;
 using System;
@@ -9,7 +10,7 @@ namespace QuizApp.Services.Contracts
 {
     public interface ITestService
     {
-        Task<List<TestDto>> GetAll();
+        Task<List<TestDto>> GetAll(TestParameters parameters);
         Task<TestDto> GetTestById(Guid id);
         Task<TestUserResponse> GetUserTestById(Guid id);
         Task<TestDto> Add(CreateTestRequest testRequest);

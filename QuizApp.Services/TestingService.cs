@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using QuizApp.DAL.Entities;
+using QuizApp.DAL.QueryParameters;
 using QuizApp.DAL.Repository.Contracts;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
@@ -31,9 +32,9 @@ namespace QuizApp.Services
 			_mapper = mapper;
 		}
 
-		public async Task<List<TestingDto>> GetAll()
+		public async Task<List<TestingDto>> GetAll(TestingParameters parameters)
 		{
-			var testings = await _repository.TestingUrl.GetAllTestings();
+			var testings = await _repository.TestingUrl.GetAllTestings(parameters);
 			var result = _mapper.Map<List<TestingDto>>(testings);
 			return result;
 		}
