@@ -2,5 +2,9 @@
 {
 	public class TestParameters : QueryStringParameters
 	{
+		public TestParameters()
+		{
+			OrderBy = "name";
+		}
 	}
 }
