@@ -3,8 +3,6 @@ using QuizApp.DAL.Entities;
 using QuizApp.DAL.QueryParameters;
 using QuizApp.DAL.Repository.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuizApp.DAL.Repository.Repositories
@@ -15,14 +13,14 @@ namespace QuizApp.DAL.Repository.Repositories
 		{
 		}
 
-		public async Task<List<Test>> GetAllTests(TestParameters parameters)
+		public async Task<PagedList<Test>> GetAllTests(TestParameters parameters)
 		{
-			return await GetAll()
-				.Include(t => t.TestQuestions)
-				.ThenInclude(t => t.TestAnswers)
-				.Skip((parameters.PageNumber - 1) * parameters.PageSize)
-				.Take(parameters.PageSize)
-				.ToListAsync();
+			return await PagedList<Test>
+				.ToPagedList(GetAll()
+					.Include(t => t.TestQuestions)
+					.ThenInclude(t => t.TestAnswers),
+				parameters.PageNumber,
+				parameters.PageSize);
 		}
 
 		public async Task<Test> GetTestById(Guid id)

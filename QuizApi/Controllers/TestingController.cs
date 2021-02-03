@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using QuizApp.DAL.QueryParameters;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
@@ -38,6 +39,9 @@ namespace QuizApp.Controllers
 			try
 			{
 				var result = await _testingService.GetAll(parameters);
+				var metadata = result.GetMetadata();
+
+				Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
 				return Ok(result);
 			}
 			catch (Exception e)

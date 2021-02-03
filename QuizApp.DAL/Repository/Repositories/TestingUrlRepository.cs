@@ -15,12 +15,12 @@ namespace QuizApp.DAL.Repository.Repositories
 		{
 		}
 
-		public async Task<List<TestingUrl>> GetAllTestings(TestingParameters parameters)
+		public async Task<PagedList<TestingUrl>> GetAllTestings(TestingParameters parameters)
 		{
-			return await GetAll()
-				.Skip((parameters.PageNumber - 1) * parameters.PageSize)
-				.Take(parameters.PageSize)
-				.ToListAsync();
+			return await PagedList<TestingUrl>
+				.ToPagedList(GetAll(),
+					parameters.PageNumber,
+					parameters.PageSize);
 		}
 	}
 }

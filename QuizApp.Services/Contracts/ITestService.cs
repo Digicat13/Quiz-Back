@@ -10,7 +10,7 @@ namespace QuizApp.Services.Contracts
 {
     public interface ITestService
     {
-        Task<List<TestDto>> GetAll(TestParameters parameters);
+        Task<PagedList<TestDto>> GetAll(TestParameters parameters);
         Task<TestDto> GetTestById(Guid id);
         Task<TestUserResponse> GetUserTestById(Guid id);
         Task<TestDto> Add(CreateTestRequest testRequest);

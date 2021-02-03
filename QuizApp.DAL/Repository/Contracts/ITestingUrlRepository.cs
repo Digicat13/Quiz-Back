@@ -8,6 +8,6 @@ namespace QuizApp.DAL.Repository.Contracts
 {
 	public interface ITestingUrlRepository : IRepository<TestingUrl, Guid>
 	{
-		Task<List<TestingUrl>> GetAllTestings(TestingParameters parameters);
+		Task<PagedList<TestingUrl>> GetAllTestings(TestingParameters parameters);
 	}
 }

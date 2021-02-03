@@ -35,10 +35,10 @@ namespace QuizApp.Services
 			_answerService = answerService;
 		}
 
-		public async Task<List<TestDto>> GetAll(TestParameters parameters)
+		public async Task<PagedList<TestDto>> GetAll(TestParameters parameters)
 		{
 			var tests = await _repository.Test.GetAllTests(parameters);
-			var result = _mapper.Map<List<TestDto>>(tests);
+			var result = new PagedList<TestDto>(_mapper.Map<List<TestDto>>(tests), tests.TotalCount ,tests.CurrentPage, tests.PageSize);
 			return result;
 		}
 
