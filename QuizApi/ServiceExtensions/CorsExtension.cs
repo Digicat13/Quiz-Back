@@ -11,6 +11,7 @@ namespace QuizApp.ServiceExtensions
                 c.AddPolicy("AllowOrigin", options => options
                 .AllowAnyMethod()
                 .AllowAnyHeader()
+                .WithExposedHeaders("x-pagination")
                 .AllowAnyOrigin());
             });
         }
