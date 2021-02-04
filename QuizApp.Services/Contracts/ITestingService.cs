@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using QuizApp.DAL.Helpers;
 using QuizApp.DAL.QueryParameters;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
+using System;
+using System.Threading.Tasks;
 
 namespace QuizApp.Services.Contracts
 {

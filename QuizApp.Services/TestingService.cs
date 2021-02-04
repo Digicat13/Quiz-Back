@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using QuizApp.DAL.Entities;
+using QuizApp.DAL.Helpers;
 using QuizApp.DAL.QueryParameters;
 using QuizApp.DAL.Repository.Contracts;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
 using QuizApp.Services.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuizApp.Services
 {

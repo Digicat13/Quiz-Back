@@ -1,4 +1,5 @@
 using QuizApp.DAL.Entities;
+using QuizApp.DAL.Helpers;
 using QuizApp.DAL.QueryParameters;
 using System;
 using System.Threading.Tasks;
