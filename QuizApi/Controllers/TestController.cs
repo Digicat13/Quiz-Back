@@ -43,7 +43,7 @@ namespace QuizApp.Controllers
                 var result = await _testService.GetAll(queryParameters);
 				var metadata = result.GetMetadata();
 
-				Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+				Response.Headers.Add("x-pagination", JsonConvert.SerializeObject(metadata));
                 return Ok(result);
             }
             catch (Exception e)
