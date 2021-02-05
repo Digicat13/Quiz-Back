@@ -20,58 +20,55 @@ namespace QuizApp.DAL.Helpers
 				return entities;
 			}
 
-			var orderParams = orderByQueryString.Trim().Split(',');
-			var propertyInfos = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-			var orderQueryBuilder = new StringBuilder();
-
-			foreach (var param in orderParams)
+			try
 			{
-				if (string.IsNullOrWhiteSpace(param))
-					continue;
-				var propertyFromQueryName = param.Split(" ")[0];
-				//var objectProperty = propertyInfos.FirstOrDefault(pi => pi.Name.Equals(propertyFromQueryName, StringComparison.InvariantCultureIgnoreCase));
-				var objectProperty = GetPropertyInfo(typeof(T), propertyFromQueryName);
-				if (objectProperty == null)
-					continue;
-				var sortingOrder = param.EndsWith(".desc") ? "descending" : "ascending";
-				orderQueryBuilder.Append($"{propertyFromQueryName} {sortingOrder}, ");
+				var orderParams = orderByQueryString.Trim().Split(',');
+				var orderQueryBuilder = new StringBuilder();
+
+				char[] delimiters = { '-', '+' };
+				foreach (var param in orderParams)
+				{
+					if (string.IsNullOrWhiteSpace(param))
+						continue;
+
+					var propertyFromQueryName = param.Split(delimiters)[0];
+					var objectProperty = GetPropertyInfo(typeof(T), propertyFromQueryName);
+					if (objectProperty == null)
+						continue;
+					var sortingOrder = param.EndsWith("-") ? "descending" : "ascending";
+					orderQueryBuilder.Append($"{propertyFromQueryName} {sortingOrder}, ");
+				}
+
+				var orderQuery = orderQueryBuilder.ToString().TrimEnd(',', ' ');
+
+				return entities.OrderBy(orderQuery);
 			}
-
-			var orderQuery = orderQueryBuilder.ToString().TrimEnd(',', ' ');
-
-			return entities.OrderBy(orderQuery);
+			catch
+			{
+				return entities;
+			}
 		}
 
 		public static PropertyInfo GetPropertyInfo(Type baseType, string propName)
 		{
-			if (propName.Contains('.'))
+			try
 			{
-				var temp = propName.Split(new char[] { '.' }, 2);
-				var property = baseType.GetProperty(temp[0], BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-				var type = property.PropertyType;
+				if (propName.Contains('.'))
+				{
+					var temp = propName.Split(new char[] { '.' }, 2);
+					var property = baseType.GetProperty(temp[0], BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+					var type = property.PropertyType;
 
-				return GetPropertyInfo(type, temp[1]);
+					return GetPropertyInfo(type, temp[1]);
+				}
+				else
+				{
+					return baseType.GetProperty(propName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+				}
 			}
-			else
+			catch
 			{
-				return baseType.GetProperty(propName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-			}
-		}
-
-		public static object GetPropertyValue(object src, string propName)
-		{
-			if (src == null) throw new ArgumentException("Value cannot be null.", "src");
-			if (propName == null) throw new ArgumentException("Value cannot be null.", "propName");
-
-			if (propName.Contains("."))
-			{
-				var temp = propName.Split(new char[] { '.' }, 2);
-				return GetPropertyValue(GetPropertyValue(src, temp[0]), temp[1]);
-			}
-			else
-			{
-				var prop = src.GetType().GetProperty(propName);
-				return prop != null ? prop.Name : null;
+				throw;
 			}
 		}
 	}
