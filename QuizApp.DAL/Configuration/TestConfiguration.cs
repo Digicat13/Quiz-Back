@@ -15,6 +15,8 @@ namespace QuizApp.DAL.Configuration
 				.IsRequired();
 			builder.Property(e => e.Description)
 				.IsRequired();
+			builder.Property(e => e.CreationDate)
+				.IsRequired();
 		}
 	}
 }

@@ -72,6 +72,7 @@ namespace QuizApp.Services
 		public async Task<TestDto> Add(CreateTestRequest testRequest)
 		{
 			var test = _mapper.Map<Test>(testRequest);
+			test.CreationDate = DateTime.Now;
 			var rowsCount = await _repository.Test.Add(test);
 			if (rowsCount == 0)
 			{
