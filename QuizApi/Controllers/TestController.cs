@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using QuizApp.DAL;
+using QuizApp.DAL.QueryParameters;
 using QuizApp.DTO;
 using QuizApp.DTO.Requests;
 using QuizApp.DTO.Responses;
@@ -33,11 +36,14 @@ namespace QuizApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<TestDto>>> GetAll()
+        public async Task<ActionResult<List<TestDto>>> GetAll([FromQuery] TestParameters queryParameters)
         {
             try
             {
-                var result = await _testService.GetAll();
+                var result = await _testService.GetAll(queryParameters);
+				var metadata = result.GetMetadata();
+
+				Response.Headers.Add("x-pagination", JsonConvert.SerializeObject(metadata));
                 return Ok(result);
             }
             catch (Exception e)
