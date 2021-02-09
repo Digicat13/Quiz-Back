@@ -29,14 +29,16 @@ namespace QuizApp.DAL
                     Description = "This test is designed to cover main concepts such as " +
                     "basic syntax, data types, collections, operators, " +
                     "exception handling and OOP in C# .NET.",
-                    TestTimeLimit = new TimeSpan(0, 30, 0)
+                    TestTimeLimit = new TimeSpan(0, 30, 0),
+                    CreationDate = new DateTime(2020, 12, 5, 7, 30, 0),
                 },
                 new Test
                 {
                     Id = new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9"),
                     Name = "Geek Culture/Movies/TV shows/Cartoons",
                     Description = "Test your geek knowledge with this epic quiz",
-                    QuestionTimeLimit = new TimeSpan(0, 0, 30)
+                    QuestionTimeLimit = new TimeSpan(0, 0, 30),
+                    CreationDate = new DateTime(2020, 3, 5, 7, 30, 0),
                 }
                 );
             modelBuilder.Entity<TestQuestion>().HasData(

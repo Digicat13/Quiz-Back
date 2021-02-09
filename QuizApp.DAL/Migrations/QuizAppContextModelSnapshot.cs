@@ -156,6 +156,10 @@ namespace QuizApp.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime?>("CreationDate")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -179,6 +183,7 @@ namespace QuizApp.DAL.Migrations
                         new
                         {
                             Id = new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531"),
+                            CreationDate = new DateTime(2020, 12, 5, 7, 30, 0, 0, DateTimeKind.Unspecified),
                             Description = "This test is designed to cover main concepts such as basic syntax, data types, collections, operators, exception handling and OOP in C# .NET.",
                             Name = ".Net Quiz",
                             TestTimeLimit = new TimeSpan(0, 0, 30, 0, 0)
@@ -186,6 +191,7 @@ namespace QuizApp.DAL.Migrations
                         new
                         {
                             Id = new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9"),
+                            CreationDate = new DateTime(2020, 3, 5, 7, 30, 0, 0, DateTimeKind.Unspecified),
                             Description = "Test your geek knowledge with this epic quiz",
                             Name = "Geek Culture/Movies/TV shows/Cartoons",
                             QuestionTimeLimit = new TimeSpan(0, 0, 0, 30, 0)
@@ -531,13 +537,13 @@ namespace QuizApp.DAL.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "07b0f155-d4d4-411c-87de-fc61dd599197",
+                            ConcurrencyStamp = "0afcb094-685d-4fa0-b74b-af0564827707",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJVK9YSVz3NSVbYutxVcccvwywG7mgjvTqLeG8MFSOM/TbZ/2EUjGsgzeSTSnV2iNQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMdv6hOFKLPbXbRAJtPzmNstvsf6DUIGYK70M73lJqTb6qre7CIQGdyxIRA5hkvudg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

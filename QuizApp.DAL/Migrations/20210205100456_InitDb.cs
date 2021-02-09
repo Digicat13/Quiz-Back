@@ -54,7 +54,8 @@ namespace QuizApp.DAL.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TestTimeLimit = table.Column<TimeSpan>(type: "time", nullable: true),
-                    QuestionTimeLimit = table.Column<TimeSpan>(type: "time", nullable: true)
+                    QuestionTimeLimit = table.Column<TimeSpan>(type: "time", nullable: true),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -284,17 +285,17 @@ namespace QuizApp.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "07b0f155-d4d4-411c-87de-fc61dd599197", "admin@gmail.com", true, false, null, "admin@gmail.com", "admin", "AQAAAAEAACcQAAAAEJVK9YSVz3NSVbYutxVcccvwywG7mgjvTqLeG8MFSOM/TbZ/2EUjGsgzeSTSnV2iNQ==", null, false, "", false, "admin" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "0afcb094-685d-4fa0-b74b-af0564827707", "admin@gmail.com", true, false, null, "admin@gmail.com", "admin", "AQAAAAEAACcQAAAAEMdv6hOFKLPbXbRAJtPzmNstvsf6DUIGYK70M73lJqTb6qre7CIQGdyxIRA5hkvudg==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Test",
-                columns: new[] { "Id", "Description", "Name", "QuestionTimeLimit", "TestTimeLimit" },
-                values: new object[] { new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9"), "Test your geek knowledge with this epic quiz", "Geek Culture/Movies/TV shows/Cartoons", new TimeSpan(0, 0, 0, 30, 0), null });
+                columns: new[] { "Id", "CreationDate", "Description", "Name", "QuestionTimeLimit", "TestTimeLimit" },
+                values: new object[] { new Guid("ceb4acf9-a249-4cc8-ac6f-04c91d0b90e9"), new DateTime(2020, 3, 5, 7, 30, 0, 0, DateTimeKind.Unspecified), "Test your geek knowledge with this epic quiz", "Geek Culture/Movies/TV shows/Cartoons", new TimeSpan(0, 0, 0, 30, 0), null });
 
             migrationBuilder.InsertData(
                 table: "Test",
-                columns: new[] { "Id", "Description", "Name", "QuestionTimeLimit", "TestTimeLimit" },
-                values: new object[] { new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531"), "This test is designed to cover main concepts such as basic syntax, data types, collections, operators, exception handling and OOP in C# .NET.", ".Net Quiz", null, new TimeSpan(0, 0, 30, 0, 0) });
+                columns: new[] { "Id", "CreationDate", "Description", "Name", "QuestionTimeLimit", "TestTimeLimit" },
+                values: new object[] { new Guid("c109ffba-9fd9-4657-a6d6-7228786a2531"), new DateTime(2020, 12, 5, 7, 30, 0, 0, DateTimeKind.Unspecified), "This test is designed to cover main concepts such as basic syntax, data types, collections, operators, exception handling and OOP in C# .NET.", ".Net Quiz", null, new TimeSpan(0, 0, 30, 0, 0) });
 
             migrationBuilder.InsertData(
                 table: "TestQuestion",
