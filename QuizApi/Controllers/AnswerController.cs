@@ -15,16 +15,16 @@ namespace QuizApp.Controllers
         private readonly IAnswerService _answerService;
         private readonly ILogger<AnswerController> _logger;
 
-        public AnswerController(IAnswerService questionService, ILogger<AnswerController> logger)
+        public AnswerController(IAnswerService answerService, ILogger<AnswerController> logger)
         {
             _logger = logger;
-            if (questionService == null)
+            if (answerService == null)
             {
                 _logger.LogError("Failed to inject AnswerService into Answer controller");
             }
             else
             {
-                _answerService = questionService;
+                _answerService = answerService;
             }
         }
 

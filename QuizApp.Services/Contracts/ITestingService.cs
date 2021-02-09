@@ -13,6 +13,6 @@ namespace QuizApp.Services.Contracts
 		Task<TestingDto> GetTestingById(Guid id);
 		Task<TestingDto> Add(CreateTestingRequest testingRequest);
 		Task<TestingDto> Update(TestingDto testingRequest);
-		Task<TestingDto> ReduceTestingAttempts(Guid id);
+		Task<TestingDto> ReduceTestingAttempts(TestingDto id);
 	}
 }

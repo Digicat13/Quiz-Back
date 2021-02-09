@@ -62,10 +62,6 @@ namespace QuizApp.Services.Contracts
 			if (testing.NumberOfRuns != 0)
 			{
 				testingResult.TestingUrl = testing;
-				if (testing.NumberOfRuns != null)
-				{
-					testing.NumberOfRuns--;
-				}
 				var rowsCount = await _repository.TestingResult.Add(testingResult);
 				if (rowsCount == 0)
 				{

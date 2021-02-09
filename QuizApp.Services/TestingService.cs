@@ -75,15 +75,13 @@ namespace QuizApp.Services
 			return result;
 		}
 
-		public async Task<TestingDto> ReduceTestingAttempts(Guid id)
+		public async Task<TestingDto> ReduceTestingAttempts(TestingDto testing)
 		{
-			var testing = await GetTestingById(id);
 			if (testing.NumberOfRuns != 0 || testing.NumberOfRuns != null)
 			{
 				testing.NumberOfRuns--;
-				var testingRequest = _mapper.Map<TestingDto>(testing);
-				var updatedTesting = await Update(testingRequest);
-				return updatedTesting;
+				_ = await Update(testing);
+				return testing;
 			}
 			else
 			{
