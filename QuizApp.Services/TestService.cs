@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using QuizApp.DAL.Entities;
+using QuizApp.DAL.Helpers;
 using QuizApp.DAL.QueryParameters;
 using QuizApp.DAL.Repository.Contracts;
 using QuizApp.DTO;
@@ -38,7 +39,7 @@ namespace QuizApp.Services
 		public async Task<PagedList<TestDto>> GetAll(TestParameters parameters)
 		{
 			var tests = await _repository.Test.GetAllTests(parameters);
-			var result = new PagedList<TestDto>(_mapper.Map<List<TestDto>>(tests), tests.TotalCount ,tests.CurrentPage, tests.PageSize);
+			var result = new PagedList<TestDto>(_mapper.Map<List<TestDto>>(tests), tests.TotalCount, tests.CurrentPage, tests.PageSize);
 			return result;
 		}
 
