@@ -59,20 +59,13 @@ namespace QuizApp.Services.Contracts
 			testingResult.CorrectAnswers = await GetCorrectAnswersCount(testingResult);
 
 			var testing = await _repository.TestingUrl.GetByIdAsync(testingResult.TestingUrlId);
-			if (testing.NumberOfRuns != 0)
+			testingResult.TestingUrl = testing;
+			var rowsCount = await _repository.TestingResult.Add(testingResult);
+			if (rowsCount == 0)
 			{
-				testingResult.TestingUrl = testing;
-				var rowsCount = await _repository.TestingResult.Add(testingResult);
-				if (rowsCount == 0)
-				{
-					throw new ArgumentException();
-				}
-				return _mapper.Map<TestingResultUserResponse>(testingResult);
+				throw new ArgumentException();
 			}
-			else
-			{
-				throw new InvalidOperationException("Number of left testing attempts is 0");
-			}
+			return _mapper.Map<TestingResultUserResponse>(testingResult);
 		}
 
 		public async Task<double> CalculateTestingScore(TestingResult testingResult)
