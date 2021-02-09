@@ -22,7 +22,7 @@ namespace QuizApp.DAL.Repository.Repositories
 			var sortedTestings = _sortHelper.ApplySort(testings, parameters.OrderBy);
 
 			return await PagedList<TestingUrl>
-				.ToPagedList(sortedTestings, 
+				.ToPagedList(sortedTestings,
 					parameters.PageNumber,
 					parameters.PageSize);
 		}
