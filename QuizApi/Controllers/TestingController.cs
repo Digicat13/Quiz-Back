@@ -79,5 +79,19 @@ namespace QuizApp.Controllers
 				return StatusCode(500, "Internal server error " + e.Message);
 			}
 		}
+
+		[HttpPut("{id}")]
+		public async Task<ActionResult> ReduceAttempt(TestingDto testingRequest)
+		{
+			try
+			{
+				var result = await _testingService.ReduceTestingAttempts(testingRequest);
+				return Ok(result);
+			}
+			catch (Exception e)
+			{
+				return StatusCode(500, "Internal server error " + e.Message);
+			}
+		}
 	}
 }

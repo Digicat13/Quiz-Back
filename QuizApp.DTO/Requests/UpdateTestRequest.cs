@@ -10,6 +10,7 @@ namespace QuizApp.DTO.Requests
         public string Description { get; set; }
         public TimeSpan? TestTimeLimit { get; set; }
         public TimeSpan? QuestionTimeLimit { get; set; }
+        public DateTime? CreationDate { get; set; }
         public List<UpdateTestQuestionRequest> Questions { get; set; }
     }
 }

@@ -126,6 +126,7 @@ namespace QuizApp.Controllers
                 {
                     return NotFound();
                 }
+                testRequest.CreationDate = test.CreationDate;
                 var result = await _testService.Update(testRequest);
                 return Ok(result);
             }
